@@ -1,22 +1,22 @@
-#include "CMoveStrategy.h"
+#include "CRandomStrategy.h"
 
-CMoveStrategy::CMoveStrategy()
+CRandomStrategy::CRandomStrategy()
   : _Timer()
 {
   
 }
 
-void CMoveStrategy::Setup()
+void CRandomStrategy::Setup()
 {
   _CurrSettings.Power = 180; 
-  _CurrSettings.Mode = cnstMoveBackward;
+  _CurrSettings.Mode = cnstMoveForward;
   _CurrSettings.Delay = 2000; 
 
   _Timer.SetDelay(2000);
   _Timer.Start(); 
 }
 
-MoveSettings CMoveStrategy::GetSettings()
+MoveSettings CRandomStrategy::GetSettings()
 {
   if (!_Timer.IsActive())
   {
@@ -28,12 +28,10 @@ MoveSettings CMoveStrategy::GetSettings()
   return _CurrSettings;
 }
 
-MoveSettings CMoveStrategy::GenerateSettings()
+MoveSettings CRandomStrategy::GenerateSettings()
 {
    MoveSettings newSettings;
-   //newSettings.Power = _CurrSettings.Power + 64;
-   //newSettings.Mode = (_CurrSettings.Mode+2)%5;
    newSettings.Power = random(100, 255);
-   newSettings.Mode = random(0,6);
+   newSettings.Mode = random(0,cnstMoveTypeCount-1);
    return newSettings;
 }

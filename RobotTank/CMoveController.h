@@ -21,8 +21,12 @@ class CMoveController
   void MoveRight(byte power);
   void Forward(byte power);
   void Backward(byte power);
+  void MoveBackLeft(byte power);
+  void MoveBackRight(byte power);
+
   void Move(byte moveType, byte power);  
   void Stop();
+  
 };
 
 

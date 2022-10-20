@@ -38,6 +38,7 @@ void CMoveController::MoveRight(byte power)
 
 void CMoveController::Forward(byte power)
 {
+  LogMsg("Forward");
   _RightMotor->Forward(power);
   _LeftMotor->Forward(power);
 }
@@ -46,6 +47,18 @@ void CMoveController::Backward(byte power)
 {
   _RightMotor->Backward(power);
   _LeftMotor->Backward(power);
+}
+
+void CMoveController::MoveBackLeft(byte power)
+{
+  _RightMotor->Backward(power);
+  _LeftMotor->Backward(power/_TurnKoeff);  
+}
+
+void CMoveController::MoveBackRight(byte power)
+{
+  _RightMotor->Backward(power/_TurnKoeff);
+  _LeftMotor->Backward(power);    
 }
 
 void CMoveController::Stop()
@@ -75,6 +88,12 @@ void CMoveController::Move(byte moveType, byte power)
       break;
     case cnstTurnRight: 
       TurnRight(power);
+      break;
+    case cnstMoveBackLeft: 
+      MoveBackLeft(power);
+      break;
+    case cnstMoveBackRight: 
+      MoveBackRight(power);
       break;
     default:
       Stop();

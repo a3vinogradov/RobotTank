@@ -2,17 +2,17 @@
 #define file_CMainController
 
 #include "CMoveController.h"
-#include "CMoveStrategy.h"
+#include "CBaseStrategy.h"
 
 class CMainController
 {
   private:
     CMoveController* _moveController;
-    CMoveStrategy* _moveStrategy;
+    CBaseStrategy* _moveStrategy;
     MoveSettings _currentMove;
 
   public:
-  CMainController(CMoveController* moveCtrl, CMoveStrategy* moveStrtegy);
+  CMainController(CMoveController* moveCtrl, CBaseStrategy* moveStrategy);
   void Setup();
   void Exec();
 };

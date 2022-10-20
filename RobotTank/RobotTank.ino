@@ -1,41 +1,40 @@
 #include "Common.h"
 #include "CMotorController.h"
 #include "CMoveController.h"
-#include "CMoveStrategy.h"
+#include "CRandomStrategy.h"
+#include "CIRStrategy.h"
 #include "CMainController.h"
+#include "CSensorController.h"
 
+CSensorController gSensorController(cnstIRLeftPin, cnstIRRightPin, cnstUSEchoPin, cnstUSTrigPin);
 CMotorController gRightMotor(MotorDirectionPinB, MotorPWMB, false);
 CMotorController gLeftMotor(MotorDirectionPinA, MotorPWMA, true);
 CMoveController gMoveController(&gLeftMotor, &gRightMotor);
-CMoveStrategy gMoveStrategy;
-CMainController gMainController(&gMoveController, &gMoveStrategy);
-
-
-
-//MoveSettings gCurrentMove;
+CRandomStrategy gRandomStrategy;
+CIRStrategy gIRStrategy(&gSensorController);
+//CMainController gMainController(&gMoveController, &gRandomStrategy);
+CMainController gMainController(&gMoveController, &gIRStrategy);
 
 void setup()
 {
   Serial.begin(9600);
+  LogMsg("");  
+  LogMsg("Setup..."); 
+
+  gSensorController.Setup();  
   gRightMotor.Setup();
   gLeftMotor.Setup();
   gMoveController.Setup();
-  gMoveStrategy.Setup();
+  gRandomStrategy.Setup();
+  gIRStrategy.Setup();
   gMainController.Setup();
-
-  //gCurrentMove = gMoveStrategy.GetSettings();
+  LogMsg("Setup successfull");    
 };
 
 void loop()
 {
-  delay(500);
+  gSensorController.Exec();
   gMainController.Exec();
 };
 
-void PrintSettings(String header, MoveSettings value)
-{
-  Serial.println();
-  Serial.println(header);
-  Serial.print("Power = "); Serial.println(value.Power);
-  Serial.print("Mode = "); Serial.println(value.Mode);
-}
+

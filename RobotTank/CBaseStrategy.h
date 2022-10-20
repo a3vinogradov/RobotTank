@@ -1,9 +1,6 @@
-#ifndef file_CMoveStrategy
-#define file_CMoveStrategy
-
+#ifndef file_CBaseSrategy
+#define file_CBaseSrategy
 #include <Arduino.h>
-#include "CTimer.h"
-#include "Common.h"
 
 struct MoveSettings
 {
@@ -20,18 +17,10 @@ struct MoveSettings
   }
 };
 
-class CMoveStrategy
+class CBaseStrategy
 {
-  private:
-  CTimer _Timer;
-  MoveSettings _CurrSettings;
-
-  
   public:
-  CMoveStrategy();
-  void Setup();
-  MoveSettings GetSettings();
-  MoveSettings GenerateSettings();
+  virtual MoveSettings GetSettings() = 0;
 };
 
-#endif 
+#endif
