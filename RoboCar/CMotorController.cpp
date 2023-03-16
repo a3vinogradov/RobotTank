@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "CMotorController.h"
 
 CMotorController::CMotorController(int motorNumber, bool isInverse):
@@ -28,14 +29,14 @@ void CMotorController::Backward(byte power)
 
 void CMotorController::Run(int power)
 {
-  int pow = _IsInverse?-power:power;
+  int pow = _IsInverse?-1:1 * constrain(power, -255, 255);
   if (pow > 0)
   {
-    Forward(pow > 255 ? 255 : pow);
+    Forward(pow);
   } 
   else
   {
-    Backward(pow< -255 ? 255 : -pow);
+    Backward(-pow);
   }   
 }
 

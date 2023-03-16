@@ -8,7 +8,6 @@ class CMainController
 {
   private:
     CMoveController* _moveController;
-    //MoveSettings _currentMove;
     FlySkyReceiver* _FlySkyReseiver;
     FlySkyData _curFlySkyData;
 
