@@ -26,6 +26,19 @@ void CMotorController::Backward(byte power)
   _afMotor.setSpeed(power);  
 }
 
+void CMotorController::Run(int power)
+{
+  int pow = _IsInverse?-power:power;
+  if (pow > 0)
+  {
+    Forward(pow > 255 ? 255 : pow);
+  } 
+  else
+  {
+    Backward(pow< -255 ? 255 : -pow);
+  }   
+}
+
 void CMotorController::Stop()
 {
   _afMotor.setSpeed(0);    // Начальная скорость вращения

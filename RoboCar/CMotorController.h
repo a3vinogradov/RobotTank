@@ -16,6 +16,7 @@ class CMotorController
   void Setup();
   void Forward(byte power);
   void Backward(byte power);
+  void Run(int power);
   void Stop(); 
 };
 
