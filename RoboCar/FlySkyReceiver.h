@@ -21,7 +21,7 @@ class FlySkyReceiver
 
     uint8_t ibusIndex = 0;
     uint8_t ibus[IBUS_BUFFSIZE] = {0};
-    uint16_t rcValue[IBUS_MAXCHANNELS]={1500};
+    uint16_t rcValue[IBUS_MAXCHANNELS]={1500,1500,1500,1500,1500,1500};
     
     void readRx();
     uint_fast16_t CalcCheckSum();

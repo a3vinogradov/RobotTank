@@ -10,7 +10,7 @@ CMotorController::CMotorController(int motorNumber, bool isInverse):
 }
 void CMotorController::Setup()
 {
-  Stop();
+  //Stop();
 }
 
 void CMotorController::Forward(byte power)
@@ -29,7 +29,13 @@ void CMotorController::Backward(byte power)
 
 void CMotorController::Run(int power)
 {
-  int pow = _IsInverse?-1:1 * constrain(power, -255, 255);
+  int pow = constrain(power, -255, 255);
+  
+  // Serial.print("Motor Run: ");
+  // Serial.print(power);
+  // Serial.print(" - ");
+  // Serial.println(pow);
+  
   if (pow > 0)
   {
     Forward(pow);
