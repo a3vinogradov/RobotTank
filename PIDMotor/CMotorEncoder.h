@@ -7,6 +7,7 @@ private:
   unsigned long _tmr;
   unsigned long _tmrSet;
   unsigned int _count;
+  unsigned int _lastCount;
   bool _state;
 public:
   CMotorEncoder(int signalPin);

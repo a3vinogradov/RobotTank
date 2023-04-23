@@ -5,12 +5,15 @@ int gPotValue;
 int gSetPoint;
 int gPIDPoint;
 
-int kP = 0;
+float kP = 0;
+float kI = 0;
+float kD = 0;
 
 unsigned long tmr1;
 unsigned long tmrPeriod = 100;
 
 CMotorEncoder gEncoder(4);
+CAvgFilter gFilter(3);
 
 void setup() {
   tmr1 = millis();
@@ -19,7 +22,7 @@ void setup() {
   gSetPoint = 0;
   gPIDPoint = 0;
   gEncoder.Setup();
-  Serial.println("goal, real, power, kP");
+  Serial.println("goal, real, power, kP, kI, kD");
 }
 
 void loop() {
@@ -31,7 +34,7 @@ void loop() {
     gSetPoint = map(gPotValue, 0, 1023, 0, 18);
     //gSetPoint = map(gPotValue, 0, 1023, 0, 255);
 
-    gPIDPoint = computePID(gEncoder.GetCount(), gSetPoint, kP, 0, 0, 0.1, 15, 255);
+    gPIDPoint = computePID(gEncoder.GetCount(), gSetPoint, kP, kI, kD, 0.1, 0, 255);
   }
 
   // вывод в плоттер
@@ -48,6 +51,12 @@ void loop() {
     Serial.print(",");
     Serial.print("kP:");
     Serial.print(kP);
+    Serial.print(",");
+    Serial.print("kI:");
+    Serial.print(kI);
+    Serial.print(",");
+    Serial.print("kD:");
+    Serial.print(kD);
     Serial.println();
   }
 
@@ -57,7 +66,22 @@ void loop() {
 
   // установка коэффициента через сом
   if (Serial.available()) {
-    kP = Serial.parseInt();
+    String inp = Serial.readString();
+    if (inp[0]=='p')
+    {
+      kP = inp.substring(1).toFloat();
+    } 
+    else
+    if (inp[0]=='i')
+    {
+      kI = inp.substring(1).toFloat();
+    } 
+    else
+    if (inp[0]=='d')
+    {
+      kD = inp.substring(1).toFloat();
+    } 
+    
   }
 }
 

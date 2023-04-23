@@ -9,6 +9,7 @@ void CMotorEncoder::Setup() {
   _tmr = millis();
   _tmrSet = 100;
   _count = 0;
+  _lastCount = 0;
   _state = digitalRead(_signalPin);
 }
 
@@ -17,6 +18,7 @@ void CMotorEncoder::Exec() {
     _tmr = millis();  // "сбросить"
     //Serial.print("Encoder tic/500ms = ");
     //Serial.println(_count);
+    _lastCount = _count;
     _count = 0;
   }
 
@@ -27,5 +29,5 @@ void CMotorEncoder::Exec() {
 }
 
 unsigned int CMotorEncoder::GetCount() {
-  return _count;  
+  return _lastCount;  
 }
