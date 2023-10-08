@@ -30,9 +30,9 @@ void CMoveController::Move(const uint_fast16_t chMove, const uint_fast16_t chTur
   // Serial.println("}");
 
   // Обработка канала газа
-  int movePow = map(chMove, 1000, 2000, 255, -255);
+  int movePow = map(chMove, 1000, 2000, -255, 255);
   // Обработка канала поворота
-  int turnPow = map(chTurn, 1000, 2000, -255, 255);
+  int turnPow = map(chTurn, 1000, 2000, 255, -255);
   // Обработка канала слайда
   int shiftPow = map(chShift, 1000, 2000, -255, 255);
 

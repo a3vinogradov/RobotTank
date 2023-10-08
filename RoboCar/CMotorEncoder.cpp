@@ -16,7 +16,7 @@ void CMotorEncoder::Exec() {
   if (millis() - _tmr >= _tmrSet) {
     _tmr = millis();  // "сбросить"
     //Serial.print("Encoder tic/500ms = ");
-    Serial.println(_count);
+    //Serial.println(_count);
     _count = 0;
   }
 
