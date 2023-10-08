@@ -1,5 +1,5 @@
 #include "CMotorEncoder.h"
-#include "CAvgFilter.h"
+#include "CMotor.h"
 
 int pinIn = A5;
 int gPotValue;
@@ -15,7 +15,7 @@ unsigned long tmr1;
 unsigned long tmrPeriod = 100;
 
 CMotorEncoder gEncoder(4);
-CAvgFilter gFilter(3);
+//CAvgFilter gFilter(3);
 
 void setup() {
   tmr1 = millis();
@@ -44,6 +44,7 @@ void loop() {
     tmr1 = millis();                   // сброс таймера
     gInputPoint = gEncoder.GetCount();
     //gSetPoint = map(gPotValue, 0, 1023, 0, 18);
+    //gPIDPoint = gSetPoint;
     gPIDPoint = computePID(gInputPoint, gSetPoint, kP, kI, kD, 0.1, 0, 255);
     // управление мотором
     MotorRun(gPIDPoint);
@@ -133,16 +134,16 @@ int computePID(float input, float setpoint, float kp, float ki, float kd, float 
   integral = constrain(integral + (float)err * dt * ki, minOut, maxOut);
   float D = (err - prevErr) / dt;
   // принудительное обнуление интегральной ошибки когда скорость = 0
-  if (input == 0 and setpoint == 0 and prevErr == err)
-  {
-    integral = 0;
-  }
+  // if (input == 0 and setpoint == 0 and prevErr == err)
+  // {
+  //   integral = 0;
+  // }
 
   // принудительное увеличение ошибки для старта мотора троганья
-  if (setpoint > 0 and input == 0) 
-  {
-    integral += 40;
-  } 
+  // if (setpoint > 0 and input == 0) 
+  // {
+  //   integral += 40;
+  // } 
 
   prevErr = err;
 
