@@ -1,0 +1,168 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFF+qBtyKM79qY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Main",
+					"defaultDiagram": true
+				}
+			]
+		},
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAGLDj9Al8TCksE=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model1",
+			"ownedElements": [
+				{
+					"_type": "UMLUseCaseDiagram",
+					"_id": "AAAAAAGLDj9Al8TDhBQ=",
+					"_parent": {
+						"$ref": "AAAAAAGLDj9Al8TCksE="
+					},
+					"name": "UseCaseDiagram1",
+					"ownedViews": [
+						{
+							"_type": "UMLUseCaseSubjectView",
+							"_id": "AAAAAAGLDj++dMTJWgk=",
+							"_parent": {
+								"$ref": "AAAAAAGLDj9Al8TDhBQ="
+							},
+							"model": {
+								"$ref": "AAAAAAGLDj++dMTH7+4="
+							},
+							"subViews": [
+								{
+									"_type": "UMLNameCompartmentView",
+									"_id": "AAAAAAGLDj++dcTKnaY=",
+									"_parent": {
+										"$ref": "AAAAAAGLDj++dMTJWgk="
+									},
+									"model": {
+										"$ref": "AAAAAAGLDj++dMTH7+4="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGLDj++dcTLw/g=",
+											"_parent": {
+												"$ref": "AAAAAAGLDj++dcTKnaY="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 208,
+											"top": -16,
+											"height": 13
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGLDj++dcTMwI4=",
+											"_parent": {
+												"$ref": "AAAAAAGLDj++dcTKnaY="
+											},
+											"font": "Arial;13;1",
+											"left": 461,
+											"top": 135,
+											"width": 109.10986328125,
+											"height": 13,
+											"text": "Motor"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGLDj++dcTNLL8=",
+											"_parent": {
+												"$ref": "AAAAAAGLDj++dcTKnaY="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 208,
+											"top": -16,
+											"width": 80.9072265625,
+											"height": 13,
+											"text": "(from Model1)"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGLDj++dcTOF/4=",
+											"_parent": {
+												"$ref": "AAAAAAGLDj++dcTKnaY="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 208,
+											"top": -16,
+											"height": 13,
+											"horizontalAlignment": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 456,
+									"top": 128,
+									"width": 119.10986328125,
+									"height": 25,
+									"stereotypeLabel": {
+										"$ref": "AAAAAAGLDj++dcTLw/g="
+									},
+									"nameLabel": {
+										"$ref": "AAAAAAGLDj++dcTMwI4="
+									},
+									"namespaceLabel": {
+										"$ref": "AAAAAAGLDj++dcTNLL8="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAGLDj++dcTOF/4="
+									}
+								}
+							],
+							"font": "Arial;13;0",
+							"left": 456,
+							"top": 128,
+							"width": 119.10986328125,
+							"height": 57,
+							"nameCompartment": {
+								"$ref": "AAAAAAGLDj++dcTKnaY="
+							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGLDkArCcTivFo=",
+							"_parent": {
+								"$ref": "AAAAAAGLDj9Al8TDhBQ="
+							},
+							"font": "Arial;13;0",
+							"left": 472,
+							"top": 16,
+							"width": 208,
+							"height": 96,
+							"text": "Моторная группа. \n2 мотора \n3.7В, 2А каждый\n\n"
+						}
+					]
+				},
+				{
+					"_type": "UMLUseCaseSubject",
+					"_id": "AAAAAAGLDj++dMTH7+4=",
+					"_parent": {
+						"$ref": "AAAAAAGLDj9Al8TCksE="
+					},
+					"name": "Motor"
+				}
+			]
+		}
+	]
+}
