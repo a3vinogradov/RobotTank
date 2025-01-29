@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "CGPO.h"
 
 //================== CArduinoGPO =====================
@@ -17,3 +18,7 @@ void CArduinoGPO::Off()
   digitalWrite(_pinNum, LOW);
 }
 
+void CArduinoGPO::PWM(uint8_t value)
+{
+  analogWrite(_pinNum, value);
+};

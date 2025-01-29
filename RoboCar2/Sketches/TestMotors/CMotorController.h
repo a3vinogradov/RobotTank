@@ -1,17 +1,17 @@
 #ifndef file_CMotorController
 #define file_CMotorController
 #include <Arduino.h>
+#include "CGPO.h"
 
 class CMotorController
 {
   private:
-    int _motorNumber;
-    AF_DCMotor _afMotor; 
-    uint8_t _direct;
     bool _IsInverse;
-    
+    CGPO* _pinConst;
+    CGPO_PWM* _pinPWM;
+   
   public:
-  CMotorController()
+  CMotorController( CGPO* pin1, CGPO_PWM* pin2, bool isInverse = false);
   void Setup();
   void Forward(byte power);
   void Backward(byte power);
