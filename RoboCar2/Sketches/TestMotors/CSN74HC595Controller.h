@@ -8,6 +8,15 @@
 // 12 / ST_CP / RCLK / синхронизация выходов (защелка)
 // 11 / SH_CP / SRCLK / вход для тактовых импульсов
 
+#define ExtQH 0 
+#define ExtQG 1 
+#define ExtQF 2 
+#define ExtQE 3 
+#define ExtQD 4 
+#define ExtQC 5 
+#define ExtQB 6 
+#define ExtQA 7 
+
 class CSN74HC595Controller{
 private:
   int _pinDS;

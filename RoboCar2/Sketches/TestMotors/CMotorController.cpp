@@ -17,10 +17,10 @@ void CMotorController::Forward(byte power)
   if (_IsInverse)
   {
     _pinConst->On();
-    _pinPWM->Off();
+    _pinPWM->PWM(255-power);
   } else {
     _pinConst->Off();
-    _pinPWM->On();
+    _pinPWM->PWM(power);
   }
 }
 
@@ -29,10 +29,10 @@ void CMotorController::Backward(byte power)
   if (_IsInverse)
   {
     _pinConst->Off();
-    _pinPWM->On();
+    _pinPWM->PWM(power);
   } else {
     _pinConst->On();
-    _pinPWM->Off();
+    _pinPWM->PWM(255-power);
   }
 }
 
@@ -59,6 +59,4 @@ void CMotorController::Stop()
 {
   _pinConst->Off();
   _pinPWM->Off();
-  //_afMotor.setSpeed(0);    // Начальная скорость вращения
-  //_afMotor.run(RELEASE);  
 }

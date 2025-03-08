@@ -20,5 +20,16 @@ void CArduinoGPO::Off()
 
 void CArduinoGPO::PWM(uint8_t value)
 {
-  analogWrite(_pinNum, value);
-};
+  if (value < 1)
+  {
+    Off();
+  } 
+  else if (value > 254)
+  {
+    On();
+  }
+  else
+  {
+    analogWrite(_pinNum, value);
+  }
+}
